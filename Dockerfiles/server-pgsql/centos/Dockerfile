@@ -119,6 +119,12 @@ RUN --mount=type=tmpfs,target=/var/lib/dnf/ \
     chown --quiet -R zabbix:root /etc/zabbix/ /var/lib/zabbix/ && \
     chgrp -R 0 /etc/zabbix/ /var/lib/zabbix/ && \
     chmod -R g=u /etc/zabbix/ /var/lib/zabbix/ && \
+    curl -o /tmp/oracle-instantclient-basic.rpm -L https://download.oracle.com/otn_software/linux/instantclient/1923000/oracle-instantclient19.23-basic-19.23.0.0.0-1.x86_64.rpm && \
+    curl -o /tmp/oracle-instantclient-odbc.rpm -L https://download.oracle.com/otn_software/linux/instantclient/1923000/oracle-instantclient19.23-odbc-19.23.0.0.0-1.x86_64.rpm && \
+    microdnf -y install libaio libnsl && \
+    rpm -ivh /tmp/oracle-instantclient-basic.rpm && \
+    rpm -ivh /tmp/oracle-instantclient-odbc.rpm && \
+    rm -f /tmp/oracle-instantclient-basic.rpm /tmp/oracle-instantclient-odbc.rpm && \
     microdnf -y clean all
 
 EXPOSE 10051/TCP

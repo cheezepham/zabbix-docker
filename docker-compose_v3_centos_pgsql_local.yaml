@@ -249,7 +249,7 @@ networks:
     driver: bridge
     driver_opts:
       com.docker.network.enable_ipv6: "${DATABASE_NETWORK_ENABLE_IPV6}"
-    internal: true
+    internal: false
     ipam:
       driver: "${DATABASE_NETWORK_DRIVER}"
 

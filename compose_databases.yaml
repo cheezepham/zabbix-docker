@@ -49,6 +49,8 @@ services:
   secrets:
    - POSTGRES_USER
    - POSTGRES_PASSWORD
+  ports:
+   - "5432:5432"
   stop_grace_period: 1m
   networks:
    zbx_net_database:
